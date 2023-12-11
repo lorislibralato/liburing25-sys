@@ -1,0 +1,29 @@
+name: Rust
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Install LLVM
+      run: |
+        wget https://apt.llvm.org/llvm.sh -O /tmp/llvm.sh
+        sudo apt-get purge --auto-remove llvm python3-lldb-14 llvm-14 -y
+        sudo bash /tmp/llvm.sh 17
+        sudo update-alternatives --install /usr/bin/clang++ clang++ /usr/bin/clang++-17 400
+        sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-17 400
+    - name: Build
+      run: cargo build
+    - name: Run tests
+      run: cargo test
