@@ -31,6 +31,20 @@ fn main() {
     println!("cargo:rustc-link-lib=static:+verbatim=liburing25-sys.a");
     println!("cargo:rustc-link-search=native={}", out.display());
     println!("cargo:rerun-if-changed=build.rs");
+
+    bindgen::Builder::default()
+        .clang_arg("--include-directory")
+        .clang_arg(out.join("liburing/src/include").display().to_string())
+        .header(out.join("liburing/src/ffi.c").display().to_string())
+        .allowlist_file(
+            out.join("liburing/src/include/liburing.h")
+                .display()
+                .to_string(),
+        )
+        .generate()
+        .unwrap()
+        .write_to_file(out.join("bindings.rs"))
+        .unwrap();
 }
 
 fn copy_dir(src: impl AsRef<Path>, dst: impl AsRef<Path>) -> std::io::Result<()> {
