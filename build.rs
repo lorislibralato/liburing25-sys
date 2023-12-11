@@ -41,6 +41,10 @@ fn main() {
                 .display()
                 .to_string(),
         )
+        .merge_extern_blocks(true)
+        .default_non_copy_union_style(bindgen::NonCopyUnionStyle::ManuallyDrop)
+        .anon_fields_prefix("anonymous")
+        .use_core()
         .generate()
         .unwrap()
         .write_to_file(out.join("bindings.rs"))
