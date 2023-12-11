@@ -20,7 +20,7 @@ jobs:
         submodules: true
     - name: Install LLVM
       run: |
-        sudo apt-get purge --auto-remove llvm* clang* -y
+        sudo apt-get purge --auto-remove llvm* clang* lld* lldb* -y
         wget -O - https://apt.llvm.org/llvm-snapshot.gpg.key | sudo apt-key add -
         sudo apt-add-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main"
         sudo apt-get install clang-17 lld-17 -y
