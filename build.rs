@@ -18,7 +18,7 @@ fn main() {
     Command::new("sh")
         .current_dir(out.join("liburing"))
         .arg("-c")
-        .arg("./configure --cc=clang --use-libc && cd src && make V=1 CFLAGS=\"-g -O3 -Wall -Wextra -fno-stack-protector -flto=thin\" liburing-ffi.a")
+        .arg("./configure --cc=clang --use-libc && cd src && make V=1 CFLAGS=\"-g -O3 -flto=thin\" liburing-ffi.a")
         .status()
         .unwrap();
 
