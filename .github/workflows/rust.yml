@@ -21,7 +21,7 @@ jobs:
     - name: Install LLVM
       run: |
         sudo apt-get purge --auto-remove llvm* clang* -y
-        wget -qO- https://apt.llvm.org/llvm-snapshot.gpg.key | sudo tee /etc/apt/trusted.gpg.d/apt.llvm.org.asc
+        sudo apt-add-repository "deb http://apt.llvm.org/jammy/ llvm-toolchain-jammy-17 main"
         sudo apt-get install clang-17 lld-17 -y
         sudo update-alternatives --install /usr/bin/clang clang /usr/bin/clang-17 400
         sudo update-alternatives --install /usr/bin/ld.lld ld.lld /usr/bin/ld.lld-17 400
