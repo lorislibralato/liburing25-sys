@@ -2,6 +2,12 @@
 name = "liburing25-sys"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
+description = "liburing-2.5 bindings"
+homepage = "https://crates.io/crates/liburing25-sys"
+documentation = "https://docs.rs/liburing25-sys"
+repository = "https://github.com/zzwxh/liburing25-sys"
+readme = "README.md"
 
 [build-dependencies]
 bindgen = "0.69"
