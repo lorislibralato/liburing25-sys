@@ -31,6 +31,6 @@ jobs:
         clang --version
         ld.lld --version
     - name: Build
-      run: cargo build
+      run: cargo build -vv
     - name: Run tests
-      run: cargo test
+      run: cargo test -vv
