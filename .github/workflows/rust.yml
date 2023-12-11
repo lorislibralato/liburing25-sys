@@ -16,6 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+      with:
+        submodules: true
     - name: Install LLVM
       run: |
         wget https://apt.llvm.org/llvm.sh -O /tmp/llvm.sh
